@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống Kê Công Trình Nước</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Thống Kê Công Trình Nước</h1>
+        </header>
+
+        <nav>
+            <a href="#" onclick="showSection('statistics')">Thống Kê</a>
+            <a href="#" onclick="showSection('add-statistic')">Thêm Thống Kê</a>
+        </nav>
+
+        <main>
+            <section id="statistics" class="content-section active">
+                <h2>Bảng Thống Kê</h2>
+                <div class="search-filter">
+                    <input type="text" id="search-input" placeholder="Tìm kiếm công trình...">
+                    <button onclick="searchStatistics()">Tìm kiếm</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên Công Trình</th>
+                            <th>Ngày Thống Kê</th>
+                            <th>Thông Số</th>
+                            <th>Giá Trị</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statistic-tbody">
+                        <!-- Dữ liệu sẽ được thêm vào đây từ JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="add-statistic" class="content-section">
+                <h2>Thêm Thống Kê</h2>
+                <form id="addStatisticForm">
+                    <div>
+                        <label for="project_id">Mã Công Trình:</label>
+                        <input type="number" id="project_id" required>
+                    </div>
+                    <div>
+                        <label for="statistic_date">Ngày Thống Kê:</label>
+                        <input type="date" id="statistic_date" required>
+                    </div>
+                    <div>
+                        <label for="metric">Thông Số:</label>
+                        <input type="text" id="metric" required>
+                    </div>
+                    <div>
+                        <label for="value">Giá Trị:</label>
+                        <input type="number" step="0.01" id="value" required>
+                    </div>
+                    <button type="submit">Thêm Thống Kê</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+<style>
+    /* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+</style>
+<script>
+    // script.js
+document.getElementById('addStatisticForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Ngăn không cho form gửi
+
+    // Lấy giá trị từ form
+    const projectId = document.getElementById('project_id').value;
+    const statisticDate = document.getElementById('statistic_date').value;
+    const metric = document.getElementById('metric').value;
+    const value = document.getElementById('value').value;
+
+    // Thêm dữ liệu thống kê mới vào bảng
+    addStatistic(projectId, statisticDate, metric, value);
+});
+
+// Mảng mẫu dữ liệu thống kê
+const statistics = [];
+
+// Hàm thêm thống kê mới
+function addStatistic(projectId, date, metric, value) {
+    const newStatistic = {
+        id: statistics.length + 1,
+        projectId: projectId,
+        statisticDate: date,
+        metric: metric,
+        value: parseFloat(value)
+    };
+
+    statistics.push(newStatistic);
+    updateStatisticTable();
+}
+
+// Cập nhật bảng thống kê
+function updateStatisticTable() {
+    const tbody = document.getElementById('statistic-tbody');
+    tbody.innerHTML = ''; // Xóa dữ liệu cũ
+
+    statistics.forEach(stat => {
+        const row = `<tr>
+            <td>${stat.id}</td>
+            <td>${stat.projectId}</td>
+            <td>${stat.statisticDate}</td>
+            <td>${stat.metric}</td>
+            <td>${stat.value}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+    });
+}
+
+// Tìm kiếm thống kê
+function searchStatistics() {
+    const searchValue = document.getElementById('search-input').value.toLowerCase();
+    const filteredStats = statistics.filter(stat => 
+        stat.projectId.toString().includes(searchValue) ||
+        stat.metric.toLowerCase().includes(searchValue)
+    );
+
+    const tbody = document.getElementById('statistic-tbody');
+    tbody.innerHTML = ''; // Xóa dữ liệu cũ
+
+    filteredStats.forEach(stat => {
+        const row = `<tr>
+            <td>${stat.id}</td>
+            <td>${stat.projectId}</td>
+            <td>${stat.statisticDate}</td>
+            <td>${stat.metric}</td>
+            <td>${stat.value}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+    });
+}
+
+// Hiện thị phần thống kê ban đầu
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+
+    const selectedSection = document.getElementById(sectionId);
+    selectedSection.classList.add('active');
+}
+
+// Mặc định hiển thị phần thống kê
+window.onload = function() {
+    showSection('statistics');
+};
+
+</script>
+</html>

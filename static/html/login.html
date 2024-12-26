@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="popup">
+        <img class="picture" src="/static/image/loginscreen.jpg">
+        <form id="login-form">
+            <div class="title">
+                ĐĂNG NHẬP
+            </div>
+            <div class="account-border-login">
+                <input class="factor account" placeholder="Tài khoản"></input></br>
+            </div>
+            <div class="password-border">
+                <input type="password" class="factor password" placeholder="Mật khẩu"></input>
+            </div>
+            <div class="text-login">
+                Đăng nhập với tư cách
+            </div>
+            <div class="login-button">
+                <button type="button" class="login-decorate" data-role="1">Admin</button>
+                <button type="button" class="login-decorate" data-role="2">Guest</button>
+            </div>
+            <script>
+                function redirectTo(url) {
+                    window.location.href = url;
+                }
+            </script>
+            <script src="/static/js/login.js"></script>
+
+            <div class="forgotpass-button">
+                <a class="forgotpass" href="/login/forgotpass">
+                    Quên mật khẩu
+                </a>
+            </div>
+            <div class="randomline">
+                <div class="noacc">
+                    Không có tài khoản?
+                </div>
+                <div class="form-toggle" onclick="toggleForms()">
+                    Đăng ký
+                </div>
+            </div>
+        </form>
+    
+
+        <form id="register-form" class="hidden" >
+            <div class="title-signup">
+                THAM GIA CÙNG CHÚNG TÔI    
+            </div>
+            <div class="bio">
+                Bạn có thể đăng ký sử dụng trang web nếu bạn là người mới
+            </div>
+            <div class="fullname-border">
+                <input type="text" id="fullname" class="factor" placeholder="Họ tên" required></input></br>
+            </div>
+            <div class="account-border-signup">
+                <input type="text" id="username" class="factor" placeholder="Tài khoản" required></input></br>
+            </div>
+            <div class="password-border">
+                <input type="password" id="password" class="factor" placeholder="Mật khẩu mới" required></input>
+            </div>
+            <div class="passwordrp-border">
+                <input type="password" id="confirm-password" class="factor" placeholder="Nhập lại mật khẩu" required></input>
+            </div>
+            <div class="phone-border">
+                <input type="email" id="email" class="factor" placeholder="Email" required>
+            </div>
+            <div class="login-button">
+                <button type="button" id="user-register-btn" class="login-decorate">Register as User</button>
+                <button type="button" id="admin-register-btn" class="login-decorate">Register as Admin</button>
+            </div>
+            <div class="form-toggle" onclick="toggleForms()">Đã có tài khoản? Đăng Nhập</div>
+        
+        <script src="/static/js/register.js"></script>
+    </form>
+    </div>
+    <script>
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            if (loginForm.classList.contains('hidden')) {
+                // Nếu form đăng ký đang hiển thị
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                // Nếu form đăng nhập đang hiển thị
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            }
+        }
+    </script>
+</body> 
+</html>

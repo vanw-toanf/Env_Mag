@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/accountinfo.css">
+    <script src="/static/js/info.js"></script>
+</head>
+<body>
+    <div class="firstline">
+        <div class="left-info">
+            Environment Management Account
+        </div>
+        <div class="right-info">
+            <a class="logout" href="/">Đăng xuất</a>
+        </div>
+    </div>
+    <hr>
+    <div class="general">
+        <div class="left-main">
+            <div class="picture-animation">
+                <img class="imguser" src="/static/image/user.png">
+            </div>
+            <div class="text">
+                <div class="information">
+                email@gmail.com
+                </div>
+                <button class="personalinfo" onclick="toggleInfo()">
+                    Thông tin cá nhân
+                </button>   
+            </div>
+        </div>
+        <div class="right-main">
+            <div id="personInfo" class="info-section">
+                <div class="title">
+                        Thông tin cá nhân
+                </div>
+                <div class="explain">
+                    Quản lý thông tin cá nhân, bao gồm số điện thoại và địa chỉ email nơi bạn có thể dùng để liên lạc
+                </div>
+                <div class="details" id="itemList">
+                    <div class="line1">
+                        <div class="name" onclick="editItem(this)" >
+                            <strong>Họ và Tên</strong>
+                            <div class="info">
+                                Hello
+                            </div>
+                        </div>
+                        <div class="dob"onclick="editItem(this)" >
+                            Ngày sinh
+                            <div class="info" >
+                                1/2/3/4
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line2">
+                        <div class="country" onclick="editItem(this)">
+                            <strong>Nơi sinh sống</strong>
+                            <div class="info">
+                                Hi
+                            </div>
+                        </div>
+                        <div class="language" onclick="editItem(this)">
+                           <strong>Ngôn ngữ</strong> 
+                            <div class="info" >
+                                Wo cao ni ma
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="overlay" class="overlay"></div>
+                <div id="popup" class="popup">
+                    <div class="titlepopup">Chỉnh sửa thông tin</div>
+                    <div for="editInput" class="inputinfo">Thông tin chỉnh sửa</div>
+                    <input class="editfix" type="text" id="editInput">
+                    <br><br>
+                    <button class="save" onclick="saveChanges()">Lưu</button>
+                    <button class="close" onclick="closePopup()">Hủy</button>
+                </div>
+            </div>                   
+        </div>
+    </div>
+    <script>
+        let currentInfo; 
+
+        function editItem(item) {
+            currentInfo = item.querySelector('.info');
+            const input = document.getElementById('editInput');
+  
+            input.value = currentInfo.innerText;
+            
+
+            document.getElementById('popup').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        function saveChanges() {
+            if (currentInfo) {
+                const input = document.getElementById('editInput');
+                currentInfo.innerText = input.value;
+            }
+            closePopup();
+        }
+
+        function closePopup() {
+   
+            document.getElementById('popup').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

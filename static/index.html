@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Gì Gì Đó</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<div class="overlay"></div>
+<body>   
+    <img class="background" src="/static/image/themeee.jpg">
+    <div class="taskbar" id="taskbar">   
+        <div class="left-taskbar">
+            <div class="font-taskbar">
+                <div id="scrollToSection1" class="text1">
+                    TRANG CHỦ                  
+                </div>
+                <div id="scrollToSection2" class="text2">
+                    GIỚI THIỆU   
+                </div>
+                <div id="scrollToSection3" class="text3">
+                    TIN TỨC    
+                </div>
+                <div id ="scrollToSection4" class="text4">
+                    LIÊN LẠC    
+                </div>
+            </div>
+        </div>
+        <div class="right-taskbar">
+            <div class="searchbar-m">
+                <input type="text" placeholder="Tìm kiếm" class="searchbar">
+            </div>  
+            <a href=/login class="login">TÀI KHOẢN</a> 
+        </div>       
+    </div >
+    <section id="section1">
+        <div class="title">
+            Countryside Environment Management
+        </div>
+        <div class="description">
+            Trang web quản lý môi trường nông thôn cung cấp giải pháp theo dõi, 
+            phân tích và quản lý tài nguyên tự nhiên nhằm bảo vệ hệ sinh thái, 
+            phát triển bền vững và nâng cao chất lượng cuộc sống cho cộng đồng nông thôn. 
+            Hệ thống hỗ trợ giám sát chất lượng đất, nước và không khí, 
+            đồng thời đưa ra các giải pháp tối ưu hóa sử dụng tài nguyên.
+        </div>
+        <div class="learnmore">
+            <button id="scrollToSection22" class="learnmore-decoration">XEM THÊM</button>           
+        </div>
+    </section>         
+    <section id="section2">
+        <div class="overlay-sec2"></div>
+        <div class="introdution">
+            <div class="left-sec2">
+                <img class="pic-sec2" src="/static/image/introduce.jpg">
+            </div>
+            <div class="right-sec2">
+                <img class="logo" src="/static/image/logo.png">
+                <div class="title-sec2">
+                    CHÚNG TÔI LÀ AI
+                </div>
+                <hr>
+                <div class="bio-sec2">
+                    Chúng tôi là những con khỉ Chào mừng bạn đến với thế giới sôi động và vui nhộn của chúng tôi - những con khỉ! 
+                    Chúng tôi sống trong rừng nhiệt đới xanh tươi, nơi mà những tán cây cao vút che bóng và những âm thanh vui vẻ vang vọng khắp nơi. 
+                </div>
+                <div class="learnmore3">
+                    <button id="scrollToSection33" class="learnmore-decoration">XEM THÊM</button>           
+                </div>
+        </div>
+    </section>
+    <section id="section3">
+        <div class="newstitle">
+            TIN TỨC CỦA CHÚNG TÔI
+        </div>
+        <div class="news-description">
+            NHỮNG TIN TỨC VÀ BÀI VIẾT <b>MỚI NHẤT</b>
+        </div>
+        <div class="popup">
+            <a href="https://moit.gov.vn/tin-tuc/phat-trien-cong-nghiep/sap-dien-ra-hoi-cho-trien-lam-hang-cong-nghiep-nong-thon-tieu-bieu-nam-2024.html" class="item-popup">
+                <img class="pic" src="/static/image/item1.jpg">
+                <div class="news">   
+                    Sắp diễn ra Hội chợ triển lãm hàng 
+                    công nghiệp nông thôn tiêu biểu năm 2024
+                </div>
+            </a>
+            <a href="https://moit.gov.vn/phat-trien-ben-vung/doanh-nghiep-san-xuat-danh-nguon-luc-lon-dau-tu-cho-san-xuat-xanh-san-xuat-ben-vung.html" class="item-popup">
+                <img class="pic" src="/static/image/pic2.jpg">
+                <div class="news">
+                    Doanh nghiệp sản xuất dành nguồn lực lớn
+                    đầu tư cho sản xuất xanh, sản xuất bền vững
+                </div>
+            </a>
+            <a href="https://moit.gov.vn/bao-ve-moi-truong/bao-ve-moi-truong-nong-thon-nang-cao-kha-nang-thich-ung-voi-bien-doi-khi-hau.html" class="item-popup">
+                <img class="pic" src="/static/image/pic3.jpg">
+                <div class="news">
+                    Bảo vệ môi trường nông thôn, nâng cao khả năng 
+                    thích ứng với biến đổi khí hậu
+                </div>
+            </a>
+        </div>
+    </section>
+    <footer id="section4">
+        <div class="contact-container">
+            <div class="title-contact">LIÊN LẠC VỚI CHÚNG TÔI</div>
+            <div class="add-mail">
+                <div class="address">
+                    <b>Address</b>
+                </div>  
+                <div class="mail">
+                    <b>Email</b>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            copyright 2024 by 
+        </div>
+    </footer> 
+    <script>
+        const taskbar = document.querySelector('.taskbar'); 
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) { 
+                    taskbar.classList.add('scrolled'); 
+                } else {
+                    taskbar.classList.remove('scrolled'); 
+            }
+        });
+        document.getElementById("scrollToSection22").addEventListener("click", function() {
+            document.getElementById("section2").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+        document.getElementById("scrollToSection33").addEventListener("click", function() {
+            document.getElementById("section3").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+        document.getElementById("scrollToSection1").addEventListener("click", function() {
+            document.getElementById("section1").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+        document.getElementById("scrollToSection2").addEventListener("click", function() {
+            document.getElementById("section2").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+        document.getElementById("scrollToSection3").addEventListener("click", function() {
+            document.getElementById("section3").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+        document.getElementById("scrollToSection4").addEventListener("click", function() {
+            document.getElementById("section4").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+      </script>
+</body>
+</html>

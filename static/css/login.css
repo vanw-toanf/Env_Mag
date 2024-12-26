@@ -1,0 +1,190 @@
+body{
+    display:flex;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.popup{
+    width:800px;
+    height:600px;
+    box-shadow:10px 10px 50px;
+    transform: translateY(10%);
+    border-radius: 10px;
+    display:flex;
+}
+
+.picture{
+    width:50%;
+    height:100%;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#login-form{
+    width:50%;
+    height:100%;
+    text-align:center;
+    padding: 20px;
+    transition:transform 0.5s ease;
+}
+
+.title{
+    font-weight:bold;
+    font-size:30px;
+    margin-top:130px;
+}
+
+.factor{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    padding :10px 25px 10px 25px;
+    border: 2px solid #796b6b;
+    border-radius: 10px;
+    background-color:#fafafa;
+    width:50%;
+}
+
+
+.fullname-border{
+    margin-top:10px;
+}
+
+.account-border-signup{
+    margin-top:10px;
+}
+
+.account-border-login{
+    margin-top:30px;
+}
+
+.password-border{
+    margin-top:10px;
+}
+
+.passwordrp-border{
+    margin-top:10px;
+}
+
+.phone-border{
+    margin-top:10px;
+}
+
+.dob-border{
+    margin-top:10px;
+}
+
+.text-login{
+    margin-top: 20px;
+    font-size:12px;
+}
+
+.login-button{
+    margin-top: 20px;   
+}
+
+.login-decorate{
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:15px;
+    font-weight:bold;
+    padding :5px 10px 5px 10px;
+    border: 2px solid #796b6b;
+    border-radius: 10px;
+    color:black;
+    background-color:#f0f0f0;
+}
+
+.login-decorate:hover{
+    box-shadow: 0px 0px 10px;
+    cursor: pointer;
+}
+
+.forgotpass{
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.forgotpass-button{
+    margin-top:20px;
+}
+
+.randomline{
+    display:flex;
+    margin-top:30px;
+    transform:translateX(25%)
+}
+
+.noacc{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #c7c7c7;
+    font-weight:bold;
+    font-size:12px;
+    margin-right: 5px;
+    margin-top:10px;
+}
+
+.signup{
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    font-weight:bold;
+    font-size:12px;
+}
+
+#register-form{
+    width:50%;
+    height:100%;
+    text-align:center;
+    padding: 20px;
+    transition:transform 0.5s ease;
+}
+
+.title-signup{
+    margin-top:100px;
+    font-weight:bold;
+    font-size:25px;
+}
+
+.bio{
+    margin-top: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    color: #c7c7c7;
+    font-size:13px;
+    margin-right: 5px;
+    font-weight:bold;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none; /* Ngăn không cho tương tác với form ẩn */
+    position: absolute;
+}
+
+.form-toggle {
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    font-weight:bold;
+    font-size:12px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.submit-form{
+    margin-top:10px;
+    margin-bottom:20px;
+    cursor:pointer;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    padding :5px 10px 5px 10px;
+    border: 2px solid #664848;
+    border-radius: 10px;
+    color:black;
+    background-color:#ece7e7;
+}
+

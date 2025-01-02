@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/admin_user.css">
+    <script src="/static/js/admin_user.js"></script>
+    <script src="/static/js/small-projects.js"></script>
+    <script src="/static/js/user.js"></script>
+    <script src="/static/js/group.js"></script>
+    <script src="/static/js/bigproject.js"></script>
+    <script src="/static/js/livestock.js"></script>
+</head>
+<body>
+    <div class="columns">
+        <div class="logo-decoration">
+            <img class="logo" src="/static/image/logo.png" alt="Image with transparent background">
+        </div>
+
+        <a class="button-manage" href="#" onclick="showSection('users')">Người dùng</a><br>
+        <a class="button-manage" href="#" onclick="showSection('group')">Nhóm</a><br>
+        <a class="button-manage" href="#" onclick="showSection('small-projects')">Công trình nước nhỏ lẻ</a><br>
+        <a class="button-manage" href="#" onclick="showSection('projects')">Công trình nước tập trung</a><br>
+        <a class="button-manage" href="#" onclick="showSection('livestock')">Chăn nuôi</a><br>
+        <a class="button-manage" href="#" onclick="showSection('processing-facility')">Cơ sở chế biến</a><br>
+        <a class="button-manage" href="#" onclick="showSection('written-regulations')">Văn bản quy hoạch</a><br>
+        <a class="button-manage" href="#" onclick="showSection('history')">Lịch sử truy cập</a><br>
+        <a class="button-manage" href="#" onclick="showSection('status-manager')">Quản trị trạng thái hoạt động</a><br>
+    </div>
+    <main>
+        <div class="information">
+                
+                <section id="users" class="content-section">
+                    <div class="topic">
+                        THÔNG TIN CÁ NHÂN
+                    </div>
+                    <section class="search-filter">
+                        <input type="text" placeholder="Tìm kiếm người dùng...">
+                        <select>
+                            <option value="admin">Admin</option>
+                            <option value="user">Người dùng</option>
+                        </select>
+                        <button class="search-btn">Tìm kiếm</button>
+                        <button class="add-user-btn" onclick="openAddUserModal()">Thêm người dùng mới</button>
+                    </section>
+                    <section class="user-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Vai trò</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>                            
+                        </table>
+                        <div id="addUserModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeAddUserModal()">&times;</span>
+                                <div class="title-project">Thêm người dùng mới</div>
+                                <form id="addUserForm">
+                                    <div class="more-info" for="user_name">
+                                        Họ và Tên 
+                                        <div >
+                                            <input type="text" id="user_name" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>                                   
+                                    </div>
+                                    <div class="more-info" for="email">
+                                        Email
+                                        <div >
+                                            <input type="text" id="email" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <div class="more-info" for="phone">
+                                        Số điện thoại
+                                        <div >
+                                            <input type="text" id="phone" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <div class="more-info" for="role">
+                                        Vai trò 
+                                        <div >
+                                            <input type="text" id="role" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit">Thêm</button>
+                                </form>                       
+                            </div>
+                        </div> 
+                    
+                    </section>
+                    
+                </section>
+
+                <section id="group" class="content-section">
+                    <div class="topic">
+                        NHÓM
+                    </div>
+                    <section class="search-filter">
+                        <input type="text" placeholder="Tìm kiếm nhóm...">
+                        <button class="search-btn">Tìm kiếm</button>
+                        <button class="add-user-btn" onclick="openAddGroupModal()">Thêm nhóm mới</button>
+                    </section>
+                    <section class="user-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên nhóm</th>
+                                    <th>Mô tả</th>
+                                </tr>
+                            </thead>                            
+                        </table>
+
+                        <div id="addGroupModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeAddGroupModal()">&times;</span>
+                                <div class="title-project">Thêm nhóm mới</div>
+                                <form id="addGroupForm">
+                                    <div class="more-info" for="group_name">
+                                        Tên nhóm
+                                        <div >
+                                            <input type="text" id="group_name" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>                                   
+                                    </div>
+                                    <div class="more-info" for="describe">
+                                        Mô tả
+                                        <div >
+                                            <input type="text" id="describe" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit">Thêm</button>
+                                </form>                       
+                            </div>
+                        </div> 
+                    </section>
+                </section>
+
+                <section id="small-projects" class="content-section">
+                    <div class="topic">
+                        CÔNG TRÌNH NƯỚC NHỎ LẺ
+                        <button class="add-user-btn" onclick="openAddProjectModal()">Thêm công trình mới</button>
+                    </div>
+
+                    <div class="search-filter">
+                        <input type="text" id="search-input" placeholder="Tìm kiếm công trình...">
+                        <button class="search-btn" onclick="searchProjects()">Tìm kiếm</button>
+                    </div>
+                    
+                    <table>                        
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên công trình</th>
+                                <th>Địa điểm</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày tạo</th>
+                                <th>Công suất</th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-tbody">
+                        </tbody>
+                    </table>
+
+                    <div id="addProjectModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeAddProjectModal()">&times;</span>
+                            <div class="title-project">Thêm công trình nước mới</div>
+                            <form id="addProjectForm">
+                                <div class="more-info" for="project_name">
+                                    Tên công trình   
+                                    <div >
+                                        <input type="text" id="project_name" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>                                   
+                                </div>
+                                <div class="more-info" for="location">
+                                    Địa điểm
+                                    <div >
+                                        <input type="text" id="location" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <div class="more-info" for="status">
+                                    Trạng thái
+                                    <div >
+                                        <input type="text" id="status" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <div class="more-info" for="capacity">
+                                    Công suất
+                                    <div >
+                                        <input type="text" id="capacity" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <button type="submit">Thêm</button>
+                            </form>
+
+                        </div>
+                    </div>   
+                </section>
+        
+                <section id="projects" class="content-section">
+                    <div class="topic">
+                        CÔNG TRÌNH NƯỚC TẬP TRUNG
+                        <button class="add-project-btn" onclick="openAddBigProjectModal()">Thêm công trình mới</button>
+                    </div>
+
+                    <div class="search-filter">
+                        <input type="text" id="search-input" placeholder="Tìm kiếm công trình...">
+                        <button class="search-btn" onclick="searchBigProjects()">Tìm kiếm</button>
+             
+                    </div>
+                    
+                    <table>                        
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên công trình</th>
+                                <th>Địa điểm</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày tạo</th>
+                                <th>Công suất</th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-tbody">
+                        </tbody>
+                    </table>
+
+                    <div id="addBigProjectModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeAddBigProjectModal()">&times;</span>
+                            <div class="title-project">Thêm công trình nước mới</div>
+                            <form id="addBigProjectForm">
+                                <div class="more-info" for="bigproject_name">
+                                    Tên công trình   
+                                    <div >
+                                        <input type="text" id="bigproject_name" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>                                   
+                                </div>
+                                <div class="more-info" for="b_location">
+                                    Địa điểm
+                                    <div >
+                                        <input type="text" id="b_location" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <div class="more-info" for="b_status">
+                                    Trạng thái
+                                    <div >
+                                        <input type="text" id="b_status" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <div class="more-info" for="b_capacity">
+                                    Công suất
+                                    <div >
+                                        <input type="text" id="b_capacity" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <button type="submit">Thêm</button>
+                            </form>
+                    
+                        </div>
+                    </div>  
+                </section>
+               
+                <section id="livestock" class="content-section">
+                   <div class="topic">
+                        CHĂN NUÔI
+                   </div>
+                   <section class="search-filter">
+                    <input type="text" placeholder="Tìm kiếm hộ chăn nuôi...">
+                    <button class="search-btn">Tìm kiếm</button>
+                    <button class="add-user-btn" onclick="openAddLSModal()">Thêm hộ chăn nuôi mới</button>
+                </section>
+                <section class="user-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Chủ sở hữu</th>
+                                <th>Ngày đăng kí</th>
+                                <th>Điều kiện VC</th>
+                            </tr>
+                        </thead>                            
+                    </table>
+                    <div id="addLSModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeAddLSModal()">&times;</span>
+                            <div class="title-project">Thêm người dùng mới</div>
+                            <form id="addLSForm">
+                                <div class="more-info" for="livestock_name">
+                                    Họ và Tên 
+                                    <div >
+                                        <input type="text" id="livestock_name" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>                                   
+                                </div>
+                                <div class="more-info" for="host">
+                                    Chủ sở hữu
+                                    <div >
+                                        <input type="text" id="host" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <div class="more-info" for="condition">
+                                    Số điện thoại
+                                    <div >
+                                        <input type="text" id="condition" class="border-input" placeholder="Nhập thông tin" required>
+                                    </div>
+                                </div>
+                                <button type="submit">Thêm</button>
+                            </form>                       
+                        </div>
+                    </div> 
+                </section>
+                </section>
+
+                <section id="processing-facility" class="content-section">
+                    <div class="topic">
+                         CƠ SỞ CHẾ BIẾN
+                    </div>
+                    <section class="search-filter">
+                        <input type="text" placeholder="Tìm kiếm cơ sở...">
+                        <button class="search-btn">Tìm kiếm</button>
+                        <button class="add-user-btn">Thêm cơ sở chế biến mới</button>
+                    </section>
+                    <section class="user-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên</th>
+                                    <th>Ngày cấp phép</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Sản phẩm</th>            
+                                </tr>
+                            </thead>                            
+                        </table>
+                    </section>
+                 </section>
+
+                 <section id="written-regulations" class="content-section">
+                    <div class="topic">
+                         VĂN BẢN QUY HOẠCH
+                    </div>
+                    <section class="search-filter">
+                        <input type="text" placeholder="Tìm kiếm văn bản...">
+                        <button class="search-btn">Tìm kiếm</button>
+                    </section>
+                    <section class="user-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Loại văn bản</th>
+                                    <th>Đường dẫn</th>
+                                </tr>
+                            </thead>                            
+                        </table>
+                    </section>
+                 </section>
+
+                 <section id="history" class="content-section">
+                    <div class="topic">
+                        LỊCH SỬ TRUY CẬP
+                    </div>
+                    <section class="search-filter">
+                        <input type="text" placeholder="Tìm kiếm người dùng..."> 
+                        <button class="search-btn">Tìm kiếm</button>
+                    </section>
+                    <section class="user-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên</th>
+                                    <th>Thời gian truy cập</th>
+                                    <th>Địa chỉ IP</th>
+                                </tr>
+                            </thead>                            
+                        </table>
+                    </section>
+                 </section>
+
+                 <section id="status-manager" class="content-section">
+                    <div class="topic">
+                        QUẢN LÝ TRẠNG THÁI
+                    </div>
+                 </section>
+        </div>
+    </main>
+</body>
+</html>

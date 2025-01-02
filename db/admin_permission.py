@@ -32,7 +32,7 @@ def create_admin_role(db: Session):
 def search_guest_accounts(db: Session, find_id: int):
     # Return all information of user with id = find_id
     return db.query(dbUser).filter(dbUser.id == find_id).all()
-def get_all(db: Session, request: UserBase):
+def get_all(db: Session):
     return db.query(dbUser).all()
 #Get all user with the same email
 # def get_by_email(db: Session, email: str):

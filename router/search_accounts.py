@@ -26,20 +26,33 @@ async def get_all_users(db: Session = Depends(get_db)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/person/", response_model=UserDisplay)
-async def search_guest(request: SearchRequest, db: Session = Depends(get_db)):
-    try:
-        user = admin_permission.search_guest_accounts(db=db, find_id=request.find_id)
-        if not user:
-            raise HTTPException(status_code=404, detail="User not found")
-        return UserDisplay.from_orm(user)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# @router.get("/person/", response_model=UserDisplay)
+# async def search_guest(request: SearchRequest, db: Session = Depends(get_db)):
+#     try:
+#         user = admin_permission.search_guest_accounts(db=db, find_id=request.find_id)
+#         if not user:
+#             raise HTTPException(status_code=404, detail="User not found")
+#         return UserDisplay.from_orm(user)
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/group/", response_model=list[GroupDisplay])
 async def all_groups(db: Session = Depends(get_db)):
     try:
         groups = admin_permission.get_all_group(db=db)
         return [GroupDisplay.from_orm(group) for group in groups]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/user/{username}", response_model=UserDisplay)
+async def search_user(username: str, db: Session = Depends(get_db)):
+    """
+    Tìm kiếm người dùng theo username.
+    """
+    try:
+        user = admin_permission.search_guest_accounts(db=db, find_name=username).all()
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        return UserDisplay.from_orm(user)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

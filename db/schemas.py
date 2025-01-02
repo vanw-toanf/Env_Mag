@@ -8,6 +8,7 @@ class HanhChinhBase (BaseModel):
     name: str
     code: str
 class HanhChinhDisplay (BaseModel):
+    id: int
     name: str
     code: str
     class Config:
@@ -77,6 +78,7 @@ class LFBase(BaseModel):
     register_date: str
 
 class LFDisplay(BaseModel):
+    id: int
     name: str
     owner: str
     register_date: str
@@ -98,6 +100,13 @@ class ConditionDisplay(BaseModel):
         if value and isinstance(value, date):
             return value.strftime("%d-%m-%Y")  # Định dạng thành chuỗi YYYY-MM-DD
         return None
+
+class Condition(BaseModel):
+    condition: str 
+class ConditionShow(BaseModel):
+    condition: str
+    class Config():
+        from_attributes = True
 
 # Construction base
 class constructionBase(BaseModel):

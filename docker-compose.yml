@@ -7,6 +7,8 @@ services:
       - mariadb
     env_file:
       - .env
+    volumes:
+      - ./:/workspace
 
   mariadb:
     image: mariadb:10.11

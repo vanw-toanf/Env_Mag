@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchConstructions();
+    fetchFocusConstructions();
 });
-async function fetchConstructions() {
+async function fetchFocusConstructions() {
     try {
         const response = await fetch('/statistic/water_focus/', {
             method: 'GET',
@@ -13,12 +13,12 @@ async function fetchConstructions() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const constructions = await response.json();
-        displayConstructions(constructions); // hien thi du lieu len table 
+        displayFocusConstructions(constructions); // hien thi du lieu len table 
     } catch (error) {
         console.error('Có lỗi khi lấy dữ liệu:', error);
     }
 }
-function displayConstructions(constructions) {
+function displayFocusConstructions(constructions) {
     const tableBody = document.querySelector('#projects .project-list table tbody');
     tableBody.innerHTML = '';
     constructions.forEach((construction,index) => {

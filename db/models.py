@@ -16,7 +16,6 @@ class dbUser(Base):
     password = Column(String(72))
     email = Column(String(255))
     role_id = Column(Integer, ForeignKey('roles.id'))   # khoa ngoai tham chieu toi cot id cua bang roles
-    status = Column(Boolean)        # trang thai hoat dong
 
 class dbUserActivity(Base):
     __tablename__ = 'user_activity'
@@ -108,7 +107,7 @@ class dbWaterReport(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String(255))      # tieu de bao cao
     report_file = Column(String(255))        # duong dan file bao cao
-    submit_date = Column(Date)      # nagy nop bao cao
+    submit_date = Column(String(25))      # nagy nop bao cao
 
 
 ## Bang bao cao thong ke
@@ -137,7 +136,7 @@ class dbFarm(Base):
     name = Column(String(255))       # ten co so chan nuoi
     owner = Column(String(255))      # ten chu so huu
     xa_id = Column(Integer, ForeignKey('xa.id'))
-    register_date = Column(Date)        # ngay dang ky
+    register_date = Column(String(25))        # ngay dang ky
 
 # Nhan vien co so chan nuoi
 class dbFarmStaff(Base):
@@ -159,7 +158,7 @@ class dbCertificate(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     farm_id = Column(Integer, ForeignKey('farms.id'))
     certificate_num = Column(String(25))        # so giay chung nhan
-    issue_date = Column(Date)       # ngay cap
+    issue_date = Column(String(25))       # ngay cap
 
 # Cơ sở chế biến sản phẩm chăn nuôi
 class dbProcessing(Base):
@@ -169,7 +168,7 @@ class dbProcessing(Base):
     processing_name = Column(String(255))        # ten co so che bien
     processing_address = Column(String(255))     # dia chi co so
     processing_product = Column(String(255))      
-    processing_date = Column(Date)      # ngay cap giay phe
+    processing_date = Column(String(25))      # ngay cap giay phe
 
 ## Bang van ban phap luat
 class dbLegal(Base):
@@ -177,4 +176,4 @@ class dbLegal(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String(255))      # tieu de van ban
     file = Column(String(255))       # duong dan file van ban
-    issue_date = Column(Date)       # ngay phat hanh
+    issue_date = Column(String(25))       # ngay phat hanh

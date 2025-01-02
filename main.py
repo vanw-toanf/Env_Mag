@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from db.database import engine
 from db import models, admin_permission, guest_permission
-from router import register_user, login, delete_user, statistic_user, search_accounts, add, create_group
+from router import register_user, login, delete_user, statistic, search_accounts, add, create_group, statistic_user
 from pathlib import Path
 
 
@@ -85,6 +85,7 @@ async def read_test2():
 app.include_router(register_user.router)
 app.include_router(login.router)
 app.include_router(delete_user.router)
+app.include_router(statistic.router)
 app.include_router(statistic_user.router)
 app.include_router(search_accounts.router)
 app.include_router(add.router)

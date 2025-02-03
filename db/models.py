@@ -18,7 +18,7 @@ class dbUser(Base):
     role_id = Column(Integer, ForeignKey('roles.id'))   # khoa ngoai tham chieu toi cot id cua bang roles
 
 class dbUserActivity(Base):
-    __tablename__ = 'user_activity'
+    __tablename__ = "user_activity"
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     IsActive = Column(Boolean, default=False)

@@ -3,11 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Heart with Text</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 6s ease infinite;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .heart {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #ff6b6b;
+            transform: rotate(-45deg);
+            animation: pulse 1.5s infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -100px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 100px;
+            top: 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.1) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+
+        .heart-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+            z-index: 1;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
 <body>
-    <div>
-        Quên thì chịu rồi
+    <div class="heart">
+        <div class="heart-text">Quên thì<br>chịu rồi</div>
     </div>
+  
 </body>
 </html>

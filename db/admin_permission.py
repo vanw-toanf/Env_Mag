@@ -29,15 +29,15 @@ def create_admin_role(db: Session):
     return admin_role
 
 # Find users and group_users
-def search_guest_accounts(db: Session, find_id: int):
+def search_guest_accounts(db: Session, find_name: str):
     # Return all information of user with id = find_id
-    return db.query(dbUser).filter(dbUser.id == find_id).all()
+    return db.query(dbUser).filter(dbUser.username == find_name).all()
+
 def get_all(db: Session):
     return db.query(dbUser).all()
-#Get all user with the same email
-# def get_by_email(db: Session, email: str):
-#     return db.query(dbUser).filter(dbUser.email == email).all()
+
 def get_all_group(db: Session):
     return db.query(dbUserGroup).all()
+
 def get_group_member(db: Session, group_id: int):
     return db.query(dbGroup_Member).filter(dbGroup_Member.group_id == group_id).all()

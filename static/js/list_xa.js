@@ -19,7 +19,7 @@ async function fetchXa() {
     }
 }
 function displayXa(xa){
-    const tableBody = document.querySelector('#xa .list table tbody');
+    const tableBody = document.querySelector('#commune .scrollable-content table tbody');
     tableBody.innerHTML = '';
     xa.forEach(xa => {
         const row = document.createElement('tr');

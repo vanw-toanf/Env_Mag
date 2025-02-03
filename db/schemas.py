@@ -19,6 +19,7 @@ class UserBase(BaseModel):
     username: str = Field(..., max_length=25)
     password: str = Field(..., min_length=6)  # Yêu cầu mật khẩu tối thiểu 6 ký tự
     email: EmailStr
+    role_id: int
 
     class Config:
         from_attributes = True
@@ -58,6 +59,7 @@ class GroupBase(BaseModel):
     description: str
 
 class GroupDisplay(BaseModel):
+    id: int
     group_name: str
     description: str
     class Config():

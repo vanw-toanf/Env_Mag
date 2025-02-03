@@ -19,7 +19,7 @@ async function fetchHuyen() {
     }
 }
 function displayHuyen(huyens) {
-    const tableBody = document.querySelector('#huyen .list table tbody');
+    const tableBody = document.querySelector('#district .scrollable-content table tbody');
     tableBody.innerHTML = '';
     huyens.forEach(huyen => {
         const row = document.createElement('tr');

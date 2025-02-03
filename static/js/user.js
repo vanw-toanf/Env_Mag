@@ -1,96 +1,124 @@
- // Mở modal để thêm công trình
- function openAddUserModal() {
-    document.getElementById('addUserModal').style.display = "block";
-}
+// Mảng dữ liệu gốc (ban đầu trống)
+let usersData = [];
 
-    // Đóng modal
-function closeAddUserModal() {
-    document.getElementById('addUserModal').style.display = "none";
-}
-
-// Thêm công trình mới
-document.getElementById('addUserForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Ngăn không cho form gửi
-    console.log("Submit form"); // Để theo dõi xem có gọi đến không
-
-    // Lấy giá trị từ form
-    const userName = document.getElementById('user_name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const role = document.getElementById('capacity').value;
-
-    // Kiểm tra các giá trị đã được lấy
-    console.log(userName, email, phone, role);
-
-    // Thêm công trình vào mảng
-    const newUser = {
-        id: user.length + 1,
-        user_name: userName,
-        email: email,
-        phone: phone,
-        created_at: new Date(),
-        role: role,
-    };
-    user.push(newUser);
-
-    // Cập nhật bảng
-    searchUser(); // Cập nhật lại danh sách công trình
-
-    // Đóng modal sau khi thêm thành công
-    closeAddUserModal();
+document.addEventListener('DOMContentLoaded', () => {
+    // Lấy danh sách người dùng từ API khi tải trang
+    fetchUsers();
 });
 
+// Hàm fetch để lấy dữ liệu người dùng từ API backend
+async function fetchUsers() {
+    try {
+        const response = await fetch('/search/all/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-
-
-
-// Tìm kiếm công trình
-function searchProjects() {
-const searchInput = document.getElementById('search-input').value.toLowerCase().trim();
-const tbody = document.getElementById('project-tbody');
-
-// Xóa các hàng cũ
-tbody.innerHTML = '';
-
-// Kiểm tra nếu giá trị tìm kiếm là số (cho trường hợp tìm ID)
-const isNumeric = !isNaN(searchInput) && searchInput !== '';
-const isDate = !isNaN(Date.parse(searchInput)); // Kiểm tra nếu giá trị tìm kiếm là ngày
-
-// Lọc và hiển thị công trình dựa trên nhiều tiêu chí
-projects
-    .filter(project => {
-        if (isNumeric) {
-            // Tìm theo ID
-            return project.id.toString() === searchInput;
-        } else if (isDate) {
-            // Tìm theo ngày tạo
-            return new Date(project.created_at).toLocaleDateString().includes(searchInput);
-        } else {
-            // Tìm theo tên công trình hoặc địa điểm
-            return project.project_name.toLowerCase().includes(searchInput) || 
-                   project.location.toLowerCase().includes(searchInput);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    })
-    .forEach(project => {
-        const row = `<tr>
-            <td>${project.id}</td>
-            <td>${project.project_name}</td>
-            <td>${project.location}</td>
-            <td>${project.status}</td>
-            <td>${new Date(project.created_at).toLocaleDateString()}</td>
-            <td>${project.capacity}</td>
-            <td>
-                <button class="edit-btn" onclick="editProject(${project.id})">Sửa</button>
-                <button class="delete-btn" onclick="deleteProject(${project.id})">Xóa</button>
-            </td>
-        </tr>`;
-        tbody.innerHTML += row;
-    });
+
+        usersData = await response.json();
+
+        // Hiển thị dữ liệu lên bảng
+        renderTable(usersData);
+    } catch (error) {
+        console.error('Có lỗi khi lấy dữ liệu:', error);
+    }
+}
+
+// Hàm hiển thị bảng dữ liệu
+function renderTable(data) {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = ""; // Xóa nội dung bảng trước khi cập nhật
+
+    if (data.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="5">Không tìm thấy kết quả phù hợp.</td></tr>';
+    } else {
+        data.forEach(user => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${user.id}</td>
+                <td>${user.fullname}</td>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+                <td>${user.role_id}</td>
+            `;
+
+            tableBody.appendChild(row);
+        });
+    }
+}
+
+// Hàm tìm kiếm người dùng
+function searchUsers() {
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    const filteredData = usersData.filter(user =>
+        user.fullname.toLowerCase().includes(query) ||
+        user.username.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query)
+    );
+    renderTable(filteredData);
 }
 
 
-// Gọi hàm tìm kiếm khi trang được tải để hiển thị tất cả công trình
-    searchProjects();
+// Mở modal thêm người dùng
+function openAddUserModal() {
+    document.getElementById("addUserModal").style.display = "block";
+}
+  
+// Đóng modal thêm người dùng
+function closeAddUserModal() {
+    document.getElementById("addUserModal").style.display = "none";
+}
 
-// Đăng ký sự kiện cho ô tìm kiếm
-    document.getElementById('search-input').addEventListener('input', searchProjects);
+// Thêm người dùng mới vào database
+document.getElementById("addUserForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Ngăn không cho form gửi
+    // console.log("Submit form"); // Để theo dõi xem có gọi đến không
+
+    // Lấy giá trị từ form
+    const fullname = document.getElementById("fullname").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const role_id = document.getElementById("role").value;
+
+    // Cập nhật dữ liệu vào database 
+    const newUser = {
+        fullname: fullname,
+        username: username,
+        password: password,
+        email: email,
+        role_id: role_id,
+    };
+
+    // Gửi dữ liệu người dùng mới lên server
+    fetch("/register_user/new_user", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Thêm người dùng thành công:", data);
+        })
+        .catch((error) => {
+            console.error("Có lỗi xảy ra:", error);
+        });
+
+    // searchUsers(); // Cập nhật lại danh sách người dùng
+    fetchUsers();
+
+    closeAddUserModal();
+});

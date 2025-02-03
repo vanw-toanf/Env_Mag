@@ -4,3 +4,5 @@
 /__pycache__/
 /SQL command.txt
 /.vscode/
+/db/__pycache__/
+routes/__pycache__/

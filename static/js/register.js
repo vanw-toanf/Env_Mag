@@ -27,6 +27,7 @@ function registerUser(role) {
         username: username,
         password: password,
         email: email,
+        role_id: role === "user" ? 2 : 1,
     };
 
     // Xác định endpoint API
@@ -64,5 +65,9 @@ function registerUser(role) {
 }
 
 window.onload = function() {
-    resetForm();
+    document.getElementById("fullname").value = "";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("confirm-password").value = "";
+        document.getElementById("email").value = "";
 };

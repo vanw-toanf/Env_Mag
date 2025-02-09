@@ -1,5 +1,5 @@
 Quản lý vệ sinh môi trường nông thôn
-1. Quản trị hệ thống
+1. Quản trị hệ thống 
 1.1. Quản lý danh mục đơn vị hành chính cấp huyện
 1.2. Tìm kiếm đơn vị hành chính cấp huyện
 1.3. Quản lý danh mục đơn vị hành chính cấp xã
@@ -31,20 +31,20 @@ Quản lý vệ sinh môi trường nông thôn
 1.29. Đăng xuất khỏi hệ thống
 1.30. Quản lý hướng dẫn sử dụng
 
-2. Quản lý quy hoạch nước sạch và vệ sinh môi trường nông thôn
+2. Quản lý quy hoạch nước sạch và vệ sinh môi trường nông thôn 
 2.1. Quản lý quy hoạch nước sạch và vệ sinh môi trường nông thôn
 2.2. Tìm kiếm thông tin quy hoạch nước sạch và vệ sinh môi trường nông thôn
 2.3. Quản lý báo cáo về quy hoạch nước sạch và vệ sinh môi trường nông thôn
 2.4. Quản lý file đính kèm của báo cáo về quy hoạch nước sạch và vệ sinh môi trường nông thôn
 2.5. Quản lý bản đồ quy hoạch nước sạch và vệ sinh môi trường nông thôn
 
-3. Quản lý thông tin về nước sạch và vệ sinh môi trường nông thôn
+3. Quản lý thông tin về nước sạch và vệ sinh môi trường nông thôn 
 3.1. Quản lý công trình cấp nước sinh hoạt tập trung nông thôn
 3.2. Tìm kiếm thông tin công trình cấp nước sinh hoạt tập trung nông thôn
 3.3. Quản lý công trình cấp nước nhỏ lẻ
 3.4. Tìm kiếm thông tin công trình cấp nước nhỏ lẻ
 
-4. Báo cáo thống kê về CSDL nước sạch và vệ sinh môi trường nông thôn
+4. Báo cáo thống kê về CSDL nước sạch và vệ sinh môi trường nông thôn 
 4.1. Thống kê về công trình nước sạch 
 4.2. Báo cáo thống kê công trình nước sạch theo thời gian
 4.3. So sách công trình nước sạch theo thời gian (dưới dạng biểu đồ)
@@ -53,12 +53,12 @@ Quản lý vệ sinh môi trường nông thôn
 4.6. Quản lý báo cáo thực hiện chỉ tiêu nước sạch
 4.7. Quản lý file đính kèm của báo cáo thực hiện chỉ tiêu nước sạch
 
-5. Quản lý Văn bản pháp luật về CSDL nước sạch và vệ sinh môi trường nông thôn
+5. Quản lý Văn bản pháp luật về CSDL nước sạch và vệ sinh môi trường nông thôn 
 5.1. Quản lý văn bản pháp luật về quản lý nước sạch và vệ sinh môi trường nông thôn
 5.2. Quản lý file đính kèm của văn bản pháp luật về quản lý nước sạch và vệ sinh môi trường nông thôn
 5.3. Tra cứu văn bản pháp luật về quản lý nước sạch và vệ sinh môi trường nông thôn
 
-6. Quản lý CSDL các cơ sở chăn nuôi
+6. Quản lý CSDL các cơ sở chăn nuôi 
 6.1. Quản lý danh mục tổ chức, cá nhân trong cơ sở chăn nuôi
 6.2. Tra cứu thông tin về tổ chức, cá nhân trong cơ sở chăn nuôi
 6.3. Quản lý thông tin về điều kiện chăn nuôi
@@ -71,3 +71,4 @@ Quản lý vệ sinh môi trường nông thôn
 
 //Cach tai thu vien 
 pip install -r .\requirements.txt
+
